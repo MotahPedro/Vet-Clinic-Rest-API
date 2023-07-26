@@ -1,4 +1,4 @@
-import TutorModel from "../models/clients";
+import {TutorModel, PetModel} from "../models/clients";
 import { Request, Response, NextFunction} from "express";
 import {createCustomError} from '../errors/custom-error'
 
@@ -29,6 +29,38 @@ export const deleteTutor = async (req:Request,res:Response,next:NextFunction)=>{
     const tutor = await TutorModel.findOneAndDelete({_id:tutorID})
     if(!tutor){
         return next(createCustomError(`Não ha tutores com id: ${tutorID}`,404))
+    }
+    res.status(200).json({tutor})
+}
+
+export const registerPet = async (req:Request,res:Response, next:NextFunction)=>{
+    const {tutorID}= req.params
+    const tutor = await TutorModel.findById(tutorID)
+
+    if(!tutor){
+        return next(createCustomError(`Não ha um tutor com id: ${tutorID}`,404))
+    }
+
+    const pet = await PetModel.create(req.body)
+    tutor.pets.push(pet)
+    await tutor.save()
+
+    res.status(201).json({pet})
+}
+
+export const updatePet = async (req:Request,res:Response,next:NextFunction)=>{
+    const {id:tutorID} = req.params
+    const tutor = await TutorModel.findById(tutorID)
+    const {pid:petID} = req.params
+    const pet = await PetModel.findOneAndUpdate({_pid:petID}, req.body,{
+        new: true,
+        runValidators: true
+    })
+    if (!pet){
+        return next(createCustomError(`O tutor selecionado não tem um pet com id: ${petID}`, 404))
+    }
+    else if(!tutor){
+        return next(createCustomError(`Não ha um tutor com id ${tutorID}`, 404))
     }
     res.status(200).json({tutor})
 }
