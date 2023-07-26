@@ -34,7 +34,7 @@ export const deleteTutor = async (req:Request,res:Response,next:NextFunction)=>{
 }
 
 export const registerPet = async (req:Request,res:Response, next:NextFunction)=>{
-    const {tutorID}= req.params
+    const {tutorid:tutorID}= req.params
     const tutor = await TutorModel.findById(tutorID)
 
     if(!tutor){
@@ -49,10 +49,10 @@ export const registerPet = async (req:Request,res:Response, next:NextFunction)=>
 }
 
 export const updatePet = async (req:Request,res:Response,next:NextFunction)=>{
-    const {id:tutorID} = req.params
+    const {tutorid:tutorID}= req.params
     const tutor = await TutorModel.findById(tutorID)
-    const {pid:petID} = req.params
-    const pet = await PetModel.findOneAndUpdate({_pid:petID}, req.body,{
+    const {petid:petID} = req.params
+    const pet = await PetModel.findOneAndUpdate({_petid:petID}, req.body,{
         new: true,
         runValidators: true
     })
@@ -67,14 +67,14 @@ export const updatePet = async (req:Request,res:Response,next:NextFunction)=>{
 
 // A forma de validação da existencia de tutor e pet do deletePet atualmente é mais efetiva que a do updatePet. Averiguação assim que tutor é inserido.
 export const deletePet = async (req:Request,res:Response,next:NextFunction)=>{
-    const {id:tutorID} = req.params
+    const {tutorid:tutorID} = req.params
     const tutor = await TutorModel.findById(tutorID)
 
     if(!tutor){
         return next(createCustomError(`Não ha um tutor com id ${tutorID}`, 404))
     }
 
-    const {pid:petID} = req.params
+    const {petid:petID} = req.params
     const pet = await PetModel.findOneAndDelete({_pid:petID})
 
     if(!pet){
