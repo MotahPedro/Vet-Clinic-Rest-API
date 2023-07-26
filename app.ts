@@ -1,27 +1,26 @@
-require('dotenv').config()
-require('express-async-errors')
-import {Request, Response, Express} from 'express'
+import 'express-async-errors'
+import {Request, Response} from 'express'
+import express, { Express } from "express"
+import connectDB from './db/connect'
+import clientsRouter from './routes/clients'
+import errorHandlerMiddleware from './middleware/error-handler'
+import notFoundMiddleware from './middleware/not-found'
 
-const express = require('express')
-const app = express()
+import dotenv from 'dotenv'
 
-const connectDB = require('./db/connect')
-const clientsRouter = require('./routes/clients')
-
-const notFoundMiddleware = require('./middleware/not-found')
-const errorHandlerMiddleware = require('./middleware/error-handler')
+dotenv.config()
+const app : Express = express()
 
 // Middleware
 app.use(express.json())
 
-// Rotas
+
 app.get('/', (req:Request,res:Response)=>{
     res.send('<h1>Veterinary API</h1><a href="/api/v1/clients">clients route</a>')
 })
 
+// Rotas
 app.use('/api/v1/clients', clientsRouter)
-
-// Rotas de Clientes
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 
@@ -31,7 +30,7 @@ const start = async() =>{
     try {
         //connectDB
         await connectDB(process.env.MONGO_URL)
-        app.listen(port, console.log(`Servidor ativo na porta ${port}`))
+        app.listen(port,()=> console.log(`Servidor ativo na porta ${port}`))
     } catch (error) {
         console.log(error)
     }

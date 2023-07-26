@@ -5,7 +5,7 @@ interface Pets extends Document{
     species: string
     carry: string
     weigth: number
-    date_if_birth: string
+    date_of_birth: string
 }
 
 interface Tutor extends Document{

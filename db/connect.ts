@@ -1,6 +1,10 @@
 import mongoose, {ConnectOptions} from 'mongoose'
 
-export const connectDB = (url:string): Promise<typeof mongoose> => {
+const connectDB = (url:string|undefined = process.env.MONGO_URL): Promise<typeof mongoose> => {
+   if(!url) {
+    throw new Error('url do MongoDB não foi fornecida')
+  }
+
   const options: ConnectOptions = {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -9,3 +13,4 @@ export const connectDB = (url:string): Promise<typeof mongoose> => {
   }
   return mongoose.connect(url,options)
 }
+export default connectDB

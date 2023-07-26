@@ -7,6 +7,6 @@ export const getAllTutors = async (req:Request,res:Response)=>{
 }
 
 export const registerTutor = async(req:Request,res:Response)=>{
-    const tutor = TutorModel.create(req.body)
+    const tutor = await TutorModel.create(req.body)
     res.status(201).json({tutor})
 }
