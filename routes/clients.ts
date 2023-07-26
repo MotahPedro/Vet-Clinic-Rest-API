@@ -5,7 +5,8 @@ const clientsRouter: Router = express.Router()
 
 //Routes
 clientsRouter.route('/tutors').get(getAllTutors)
-clientsRouter.route('/tutor/:id').post(registerTutor).put(updateTutor).delete(deleteTutor)
+clientsRouter.route('/tutor').post(registerTutor)
+clientsRouter.route('/tutor/:id').put(updateTutor).delete(deleteTutor)
 clientsRouter.route('/pet/:tutorid').post(registerPet)
 clientsRouter.route('/pet/:petid/tutor/:tutorid').put(updatePet).delete(deletePet)
 
