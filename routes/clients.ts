@@ -1,10 +1,11 @@
 import express, {Router} from "express"
-import {getAllTutors,registerTutor} from '../controllers/clients'
+import {deleteTutor, getAllTutors,registerTutor, updateTutor} from '../controllers/clients'
 
 const clientsRouter: Router = express.Router()
 
 //Routes
-clientsRouter.route('/').get(getAllTutors).post(registerTutor)
+clientsRouter.route('/tutors').get(getAllTutors)
+clientsRouter.route('/tutor/:id').post(registerTutor).put(updateTutor).delete(deleteTutor)
 
 
 export default clientsRouter

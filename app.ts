@@ -16,11 +16,11 @@ app.use(express.json())
 
 
 app.get('/', (req:Request,res:Response)=>{
-    res.send('<h1>Veterinary API</h1><a href="/api/v1/clients">clients route</a>')
+    res.send('<h1>Veterinary API</h1><a href="/api/clients">clients route</a>')
 })
 
 // Rotas
-app.use('/api/v1/clients', clientsRouter)
+app.use('/api/clients', clientsRouter)
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 
