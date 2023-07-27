@@ -35,7 +35,6 @@ export const deleteTutor = async (req:Request,res:Response,next:NextFunction)=>{
 
 export const registerPet = async (req:Request,res:Response, next:NextFunction)=>{
     const {tutorid:tutorID}= req.params
-    console.log(req)
     const tutor = await TutorModel.findById(tutorID)
 
     if(!tutor){
