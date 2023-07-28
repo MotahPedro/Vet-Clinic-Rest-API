@@ -49,7 +49,7 @@ para que a equipe comercial e gerencial tenha a visão técnica primária das ne
 
 Para executar o projeto localmente siga o passo a passo abaixo:
 
-1 - Verifique se você possuí Node.js e git instalados em sua máquina. Caso não tenha baixe a versão de node compativel com sua máquina pelo link https://nodejs.org/en/download. E git pelo link https://git-scm.com/downloads. (Caso tenha que baixar git você terá que configura-lo para para ativar no terminal do Vs Code)
+1 - Verifique se você possuí Node.js e git instalados em sua máquina. Caso não tenha, baixe a versão de node compativel com sua máquina clicando [aqui](https://nodejs.org/en/download). E a de git [aqui](https://git-scm.com/downloads). (Caso tenha que baixar git você terá que configura-lo para para ativar no terminal do VS Code)
 
 2 - Copie o link fornecido no botão <>Code desse repositório. Vá até o terminal do Vs Code e use o comando **git init** para iniciar um repositório e em seguida use o comando **git clone <link obtido>**.
 
@@ -70,41 +70,50 @@ Para executar o projeto localmente siga o passo a passo abaixo:
 • Rota responsável por mostrar tutores e seus pets:   
 GET - http://localhost:3000/api/clients/tutors 
 
-• Rota responsável por inserir tutores:   
-POST - http://localhost:3000/api/clients/tutor    
+• Rota responsável por inserir tutores:     
+POST - http://localhost:3000/api/clients/tutor      
 
-• Rota responsável por atualizar tutores:   
-PUT -  http://localhost:3000/api/clients/tutor/:id     
+• Rota responsável por atualizar tutores:           
+PUT -  http://localhost:3000/api/clients/tutor/:id          
 
-• Rota responsável por deletar tutores:  
-DELETE  -  http://localhost:3000/api/clients/tutor/:id    
+• Rota responsável por deletar tutores:         
+DELETE  -  http://localhost:3000/api/clients/tutor/:id          
 
-Rota responsável por inserir um pet em um tutor:
-• POST - http://localhost:3000/api/clients/pet/:tutorid  
+• Rota responsável por inserir um pet em um tutor:          
+POST - http://localhost:3000/api/clients/pet/:tutorid           
 
-• Rota responsável por atualizar um pet e consequentemente a lista de pets de seu tutor:
-PUT  - http://localhost:3000/api/clients/pet/:petid/tutor/:tutorid 
+• Rota responsável por atualizar um pet e consequentemente a lista de pets de seu tutor:            
+PUT  - http://localhost:3000/api/clients/pet/:petid/tutor/:tutorid      
 
-• Rota responsável por deletar um pet atrelado a um tutor:
-DELETE  -  http://localhost:3000/api/clients/pet/:petid/tutor/:tutorid
+• Rota responsável por deletar um pet atrelado a um tutor:          
+DELETE  -  http://localhost:3000/api/clients/pet/:petid/tutor/:tutorid      
 
 10 - Para o uso efetivo insira os parâmetros da rota Post responsável por inserir o tutor primeiro de acordo com o exemplo:
 
-
+<img width="" height="" src="https://github.com/MotahPedro/Compass-Desafio-1/issues/1#issue-1826657228">
+</p>
 
 11 - A rota GET não necessita de nenhum parâmetro. Para ela ter sucesso é necessário haver passado ao menos um tutor pela rota.
 
 12 - As rotas PUT requerem a inserção dos parâmetros que devem ser mudados além é claro dos ids do tutor para a de atualizar tutor e ids do tutoe e pet para atualizar um pet. De forma similar ao POST, porém aqui elas irão sobrescrever as informações anteriores. Exemplo:
 
+<img width="" height="" src="https://github.com/MotahPedro/Compass-Desafio-1/issues/2#issue-1826660478">
+</p>
 
-13 - As rotas DELETE apenas irão requerir os ids de acordo com o que quer deletar. Id de tutor para deletar um tutor, e id de tutor e pet para deletar um pet.
+13 - As rotas DELETE apenas irão requerir os ids de acordo com o que quer deletar. Id de tutor para deletar um tutor, e id de tutor e pet para deletar um pet. Exemplo:
+
+<img width="" height="" src="https://github.com/MotahPedro/Compass-Desafio-1/issues/3#issue-1826666629">
+</p>
+
+</details>
+
 ## Referências
 
  - [Mongoose Guide](https://mongoosejs.com/docs/guides.html)
  - [JavaScript Guide](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference)
  - [TypeScript Guide](https://www.typescriptlang.org/docs/handbook/intro.html)
 
-</details>
+
 
 <details>
     <summary> 
