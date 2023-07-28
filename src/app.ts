@@ -11,15 +11,12 @@ import dotenv from 'dotenv'
 dotenv.config()
 const app : Express = express()
 
-// Middleware
 app.use(express.json())
-
 
 app.get('/', (req:Request,res:Response)=>{
     res.send('<h1>Veterinary API</h1><a href="/api/clients">clients route</a>')
 })
 
-// Rotas
 app.use('/api/clients', clientsRouter)
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)

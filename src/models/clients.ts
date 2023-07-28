@@ -34,9 +34,5 @@ const TutorSchema: Schema<Tutor> = new mongoose.Schema({
     pets:{type: [PetsSchema], default: []},
 })
 
-
-
 export const TutorModel = mongoose.model<Tutor>('Tutor', TutorSchema)
 export const PetModel = mongoose.model<Pets>('Pet', PetsSchema)
-
-

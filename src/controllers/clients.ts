@@ -12,7 +12,6 @@ export const getAllTutors = async (req:Request,res:Response)=>{
     } catch (error) {
         res.status(500).json({error:'Erro ao buscar tutores'})
     }
-
 }
 
 export const registerTutor = async(req:Request,res:Response)=>{
@@ -117,5 +116,3 @@ export const deletePet = async (req:Request,res:Response,next:NextFunction)=>{
         next(error)
     }
 }
-
-// Obrigado por averiguar meu código :)

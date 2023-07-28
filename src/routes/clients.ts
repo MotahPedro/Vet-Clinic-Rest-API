@@ -10,5 +10,4 @@ clientsRouter.route('/tutor/:id').put(updateTutor).delete(deleteTutor)
 clientsRouter.route('/pet/:tutorid').post(registerPet)
 clientsRouter.route('/pet/:petid/tutor/:tutorid').put(updatePet).delete(deletePet)
 
-
 export default clientsRouter
