@@ -10,13 +10,13 @@ para que a equipe comercial e gerencial tenha a visão técnica primária das ne
 
 ## Técnologias
 </summary>
-</details>
+
 
 • TypeScript        
 • Node.js        
 • Express        
 • MongoDB
-
+</details>
 
 <details>
 <summary>
