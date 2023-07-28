@@ -5,8 +5,12 @@ Primeiro desafio oferecido pelo estagio (Node.js) - AWS Cloud Context - Compass 
 O desafio simula um cenário em que este microsserviço será utilizado por todas as clínicas próprias para gestão de clientes internos e atendimentos.
 As bases POC desse novo microsserviço devem ser construidas,
 para que a equipe comercial e gerencial tenha a visão técnica primária das necessidades do cliente.
+<details>
+<summary>
 
 ## Técnologias
+</summary>
+</details>
 
 • TypeScript        
 • Node.js        
