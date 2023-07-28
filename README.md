@@ -12,11 +12,13 @@ para que a equipe comercial e gerencial tenha a visão técnica primária das ne
 • Node.js        
 • Express        
 • MongoDB
+
+
 <details>
 <summary>
 
 ## Funcionalidades e Requerimentos Base
-<summary>
+</summary>
 
 ✅ Retorna todos os clientes cadastrados        
 ✅ Cadastra clientes       
@@ -90,30 +92,22 @@ DELETE  -  http://localhost:3000/api/clients/pet/:petid/tutor/:tutorid
 
 10 - Para o uso efetivo insira os parâmetros da rota Post responsável por inserir o tutor primeiro de acordo com o exemplo:
 
-<img width="" height="" src="https://github.com/MotahPedro/Compass-Desafio-1/issues/1#issue-1826657228">
+<img width="" height="" src="https://github.com/MotahPedro/Compass-Desafio-1/assets/111978930/59515a85-f816-492d-a121-837e8ad11cb8">
 </p>
 
 11 - A rota GET não necessita de nenhum parâmetro. Para ela ter sucesso é necessário haver passado ao menos um tutor pela rota.
 
 12 - As rotas PUT requerem a inserção dos parâmetros que devem ser mudados além é claro dos ids do tutor para a de atualizar tutor e ids do tutoe e pet para atualizar um pet. De forma similar ao POST, porém aqui elas irão sobrescrever as informações anteriores. Exemplo:
 
-<img width="" height="" src="https://github.com/MotahPedro/Compass-Desafio-1/issues/2#issue-1826660478">
+<img width="" height="" src="https://github.com/MotahPedro/Compass-Desafio-1/assets/111978930/fdec4b5b-9d88-4334-bf56-8627a3bd35f0">
 </p>
 
 13 - As rotas DELETE apenas irão requerir os ids de acordo com o que quer deletar. Id de tutor para deletar um tutor, e id de tutor e pet para deletar um pet. Exemplo:
 
-<img width="" height="" src="https://github.com/MotahPedro/Compass-Desafio-1/issues/3#issue-1826666629">
+<img width="" height="" src="https://github.com/MotahPedro/Compass-Desafio-1/assets/111978930/b5e5f871-468f-471e-b0e3-82cec27f7b24">
 </p>
 
 </details>
-
-## Referências
-
- - [Mongoose Guide](https://mongoosejs.com/docs/guides.html)
- - [JavaScript Guide](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference)
- - [TypeScript Guide](https://www.typescriptlang.org/docs/handbook/intro.html)
-
-
 
 <details>
     <summary> 
@@ -136,6 +130,17 @@ DELETE  -  http://localhost:3000/api/clients/pet/:petid/tutor/:tutorid
 
 - 2 Instrutores não encontrados.
 
+</details>
+
+<details>
+<summary>
+
+## Referências
+</summary>
+
+ - [Mongoose Guide](https://mongoosejs.com/docs/guides.html)
+ - [JavaScript Guide](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference)
+ - [TypeScript Guide](https://www.typescriptlang.org/docs/handbook/intro.html)
 </details>
 
 <details>
