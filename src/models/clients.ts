@@ -17,15 +17,6 @@ interface Tutor extends Document{
     pets: Pets[]
 }
 
-const TutorSchema: Schema<Tutor> = new mongoose.Schema({
-    name:{type:String, required: true},
-    phone:{type:String, required: true},
-    email:{type:String, required: true},
-    date_of_birth:{type:String, required: true},
-    zip_code:{type:String, required: true},
-    pets:{type:Array, required: true},
-})
-
 const PetsSchema: Schema<Pets> =  new mongoose.Schema({
     name:{type: String, require:true},
     species:{type: String, require: true},
@@ -33,6 +24,17 @@ const PetsSchema: Schema<Pets> =  new mongoose.Schema({
     weigth: {type: Number, require: true},
     date_of_birth: {type: String, require: true}
 })
+
+const TutorSchema: Schema<Tutor> = new mongoose.Schema({
+    name:{type:String, required: true},
+    phone:{type:String, required: true},
+    email:{type:String, required: true},
+    date_of_birth:{type:String, required: true},
+    zip_code:{type:String, required: true},
+    pets:{type: [PetsSchema], default: []},
+})
+
+
 
 export const TutorModel = mongoose.model<Tutor>('Tutor', TutorSchema)
 export const PetModel = mongoose.model<Pets>('Pet', PetsSchema)

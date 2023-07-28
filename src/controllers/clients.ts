@@ -3,8 +3,16 @@ import { Request, Response, NextFunction} from "express";
 import {createCustomError} from '../errors/custom-error'
 
 export const getAllTutors = async (req:Request,res:Response)=>{
-    const tutors = await TutorModel.find({})
-    res.status(200).json({tutors})
+    try {
+        const tutors = await TutorModel.find({})
+
+        const populatedTutors = await TutorModel.populate(tutors, {path: 'pets'})
+
+        res.status(200).json({tutors: populatedTutors})
+    } catch (error) {
+        res.status(500).json({error:'Erro ao buscar tutores'})
+    }
+
 }
 
 export const registerTutor = async(req:Request,res:Response)=>{
@@ -48,37 +56,65 @@ export const registerPet = async (req:Request,res:Response, next:NextFunction)=>
     res.status(201).json({pet})
 }
 
-export const updatePet = async (req:Request,res:Response,next:NextFunction)=>{
-    const {tutorid:tutorID, petid:petID} = req.params
-    const tutor = await TutorModel.findById(tutorID)
+export const updatePet = async (req: Request, res: Response, next: NextFunction) => {
+    const { tutorid: tutorID, petid: petID } = req.params;
 
-    if(!tutor){
-        return next(createCustomError(`Não ha um tutor com id:${tutorID}`, 404))
+    try {
+        const updatedPet = await PetModel.findOneAndUpdate({ _id: petID }, req.body, {
+            new: true,
+            runValidators: true,
+        });
+
+        if (!updatedPet) {
+            return next(createCustomError(`O tutor selecionado não tem um pet com id:${petID}`, 404));
+        }
+
+        const tutor = await TutorModel.findById(tutorID)
+
+        if (tutor) {
+            const petToUpdate = tutor.pets.find((pet) => pet._id.equals(petID))
+
+            if (petToUpdate) {
+                petToUpdate.name = updatedPet.name
+                petToUpdate.species = updatedPet.species
+                petToUpdate.carry = updatedPet.carry
+                petToUpdate.weigth = updatedPet.weigth
+                petToUpdate.date_of_birth = updatedPet.date_of_birth
+
+                await tutor.save()
+            }
+        }
+
+        res.status(200).json({ pet: updatedPet })
+    } catch (error) {
+        next(error)
     }
-
-    const pet = await PetModel.findOneAndUpdate({_id:petID}, req.body,{
-        new: true,
-        runValidators: true
-    })
-
-    if (!pet){
-        return next(createCustomError(`O tutor selecionado não tem um pet com id:${petID}`, 404))
-    }
-    res.status(200).json({pet})
-}
+};
 
 export const deletePet = async (req:Request,res:Response,next:NextFunction)=>{
     const {tutorid:tutorID, petid:petID} = req.params
-    const tutor = await TutorModel.findById(tutorID)
 
-    if(!tutor){
-        return next(createCustomError(`Não ha um tutor com id ${tutorID}`, 404))
-    }
+    try {
+        const deletePet = await PetModel.findOneAndDelete({_id:petID})
 
-    const pet = await PetModel.findOneAndDelete({_id:petID})
+        if(!deletePet){
+            return next(createCustomError(`Não ha um pet com o id:${petID} registrado com esse tutor`, 404))
+        }
 
-    if(!pet){
-        return next(createCustomError(`Não ha um pet com o id:${petID} registrado com esse tutor`, 404))
+        const tutor = await TutorModel.findById(tutorID)
+
+        if(tutor){
+            const petIndex = tutor.pets.findIndex((pet)=> pet._id.equals(petID))
+
+            if (petIndex !== -1) {
+                tutor.pets.splice(petIndex, 1)
+                await tutor.save()
+            }
+        }
+
+        res.status(200).json({deletePet})
+    } catch (error) {
+        next(error)
     }
 }
 
