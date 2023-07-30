@@ -24,13 +24,13 @@ so that the commercial and management team has the primary technical vision of t
 ## Functionalities and Basic Requirements
 </summary>
 
-✅ Returns all registered customers
-✅ Register customers
-✅ Update customers
-✅ Delete customers
-✅ Register a pet and add it to a client
-✅ Upgrade a pet
-✅ Delete a pet
+✅ Returns all registered customers     
+✅ Register customers       
+✅ Update customers       
+✅ Delete customers       
+✅ Register a pet and add it to a client        
+✅ Upgrade a pet        
+✅ Delete a pet       
 
         
 ## Assessment requirements
