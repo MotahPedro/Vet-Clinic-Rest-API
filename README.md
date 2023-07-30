@@ -35,15 +35,15 @@ so that the commercial and management team has the primary technical vision of t
         
 ## Assessment requirements
 
-• Readability
-• Private repository
-• Small commits
-• Default commits
-• TypeScript
-• Express
-• Readme.md
-• Explanation of how to run locally
-• Share repository access with instructors for evaluation.
+• Readability         
+• Private repository          
+• Small commits           
+• Default commits         
+• TypeScript          
+• Express           
+• Readme.md         
+• Explanation of how to run locally           
+• Share repository access with instructors for evaluation.          
 
 </details>
 
@@ -139,7 +139,7 @@ DELETE - http://localhost:3000/api/clients/pet/:petid/tutor/:tutorid
 <details>
 <summary>
 
-## Referências
+## References
 </summary>
 
  - [Mongoose Guide](https://mongoosejs.com/docs/guides.html)
