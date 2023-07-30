@@ -69,7 +69,7 @@ so that the commercial and management team has the primary technical vision of t
 
 7 - Use the command **npm start** in the VS Code terminal to start the program
 
-8 - Open an application supporting the documentation of requests made by APIs such as Postman or Insomnia.
+8 - Open an application supporting the documentation of requests made by APIs called PostMan.
 
 9 - Create the following routes:
 
