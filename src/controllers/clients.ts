@@ -16,7 +16,7 @@ export const getAllTutors = async (req:Request,res:Response)=>{
 
 export const registerTutor = async(req:Request,res:Response)=>{
     const tutor = await TutorModel.create(req.body)
-    res.status(201).json({tutor})
+    res.status(200).json({tutor})
 }
 
 export const updateTutor = async (req:Request,res:Response, next:NextFunction)=>{
@@ -33,11 +33,18 @@ export const updateTutor = async (req:Request,res:Response, next:NextFunction)=>
 
 export const deleteTutor = async (req:Request,res:Response,next:NextFunction)=>{
     const {id:tutorID} = req.params
-    const tutor = await TutorModel.findOneAndDelete({_id:tutorID})
+    const tutor = await TutorModel.findById(tutorID)
+
     if(!tutor){
         return next(createCustomError(`Não ha tutores com id: ${tutorID}`,404))
     }
-    res.status(200).json({tutor})
+
+    if(tutor.pets.length >= 1){
+        return res.status(500).json(`Você não pode deletar esse tutor pois ele tem pets registrados`)
+    }else if(tutor.pets.length < 1){
+        const tutorDel = await TutorModel.findOneAndDelete({_id:tutorID})
+        res.status(200).json({tutorDel})
+    }
 }
 
 export const registerPet = async (req:Request,res:Response, next:NextFunction)=>{
@@ -52,7 +59,7 @@ export const registerPet = async (req:Request,res:Response, next:NextFunction)=>
     tutor.pets.push(pet)
     await tutor.save()
 
-    res.status(201).json({pet})
+    res.status(200).json({pet})
 }
 
 export const updatePet = async (req: Request, res: Response, next: NextFunction) => {
