@@ -6,8 +6,8 @@ The challenge simulates a scenario in which this microservice will be used by al
 The POC bases of this new microservice must be built,
 so that the commercial and management team has the primary technical vision of the customer's needs.
 
-Name: Pedro Henrique Mota
-Compass E-mail: pedro.henrique.pb@compasso.com.br
+***Name: Pedro Henrique Mota***         
+***Compass E-mail: pedro.henrique.pb@compasso.com.br***       
 
 <details>
 <summary>
